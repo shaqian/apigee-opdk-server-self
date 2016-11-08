@@ -1,0 +1,16 @@
+---
+# tasks file for apigee-opdk-server-self
+- name: Obtain server self report for {{ server_type }}
+  ignore_errors: yes
+  opdk_server_self:
+    server_type: '{{ server_type }}'
+    username: '{{ opdk_user_email }}'
+    password: '{{ opdk_user_pass }}'
+
+- name: Construct self report variable name
+  set_fact:
+    self_report_name: 'edge_{{ server_type }}_self'
+
+- name: Server self attributes report
+  debug:
+    msg: "{{ hostvars[inventory_hostname][self_report_name] }}"
