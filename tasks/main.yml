@@ -1,5 +1,10 @@
 ---
 # tasks file for apigee-opdk-server-self
+- name: Validate that server_type was provided
+  fail:
+    msg: "Please provide the server_type"
+  when: server_type is not defined
+
 - name: Obtain server self report for {{ server_type }}
   ignore_errors: yes
   opdk_server_self:
