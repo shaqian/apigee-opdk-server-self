@@ -5,18 +5,7 @@
     msg: "Please provide the server_types"
   when: server_types is not defined
 
-- name: Obtain server self report for {{ server_type }}
-  ignore_errors: yes
-  opdk_server_self:
-    server_type: '{{ item }}'
-    username: '{{ opdk_user_email }}'
-    password: '{{ opdk_user_pass }}'
-  with_items: '{{ server_types }}'
-
-- name: Construct self report variable name
-  set_fact:
-    self_report_name: 'edge_{{ server_type }}_self'
-
-- name: Server self attributes report
-  debug:
-    msg: "{{ hostvars[inventory_hostname][self_report_name] }}"
+- include: server_type.yml
+  with_items:  '{{ server_types }}'
+  loop_control:
+    loop_var: server_type
