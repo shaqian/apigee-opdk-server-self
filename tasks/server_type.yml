@@ -13,3 +13,4 @@
 - name: Server self attributes report
   debug:
     msg: "{{ hostvars[inventory_hostname][self_report_name] }}"
+  when: "{{ self_report_name }} is defined"
