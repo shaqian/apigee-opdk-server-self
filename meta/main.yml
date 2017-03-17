@@ -13,4 +13,4 @@ galaxy_info:
   - apigee
   - opdk
 dependencies:
-- apigee-opdk-module
+- apigee-opdk-modules
