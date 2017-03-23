@@ -1,6 +1,5 @@
 ---
 - name: Obtain server self report for {{ server_type }}
-  ignore_errors: yes
   no_log: True
   opdk_server_self:
     server_type: '{{ server_type }}'
