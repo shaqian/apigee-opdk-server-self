@@ -1,6 +1,5 @@
 ---
 - name: Obtain server self report for {{ server_type }}
-  no_log: True
   opdk_server_self:
     server_type: '{{ server_type }}'
     username: '{{ opdk_user_email }}'
